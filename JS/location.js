@@ -15,10 +15,37 @@ btn.addEventListener("click", function () {
 
   getPosition
     .then(function (position) {
-      const { latitude, longitude } = position.coords;
-      locationDisplay.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      const url =
+        "https://nominatim.openstreetmap.org/reverse?format=json&lat=" +
+        latitude +
+        "&lon=" +
+        longitude;
+
+      return fetch(url);
+    })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("API response not OK: " + response.statusText);
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      if (data.address) {
+        const location =
+          data.address.city ||
+          data.address.town ||
+          data.address.village ||
+          data.address.country ||
+          "Unknown location";
+        locationDisplay.textContent = "Location: " + location;
+      } else {
+        locationDisplay.textContent = "No location data found.";
+      }
+      locationDisplay.style.opacity = 1;
     })
     .catch(function (err) {
-      locationDisplay.textContent = `Error: ${err.message}`;
+      locationDisplay.textContent = "Error: " + err.message;
     });
 });
