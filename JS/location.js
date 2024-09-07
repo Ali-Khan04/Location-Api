@@ -1,5 +1,6 @@
 const btn = document.getElementById("call_button");
 const locationDisplay = document.getElementById("display_window");
+const cityImage = document.getElementById("city_image");
 
 btn.addEventListener("click", function () {
   const getPosition = new Promise(function (resolve, reject) {
@@ -44,8 +45,15 @@ btn.addEventListener("click", function () {
         locationDisplay.textContent = "No location data found.";
       }
       locationDisplay.style.opacity = 1;
-    })
-    .catch(function (err) {
-      locationDisplay.textContent = "Error: " + err.message;
+
+      if (location !== "Unknown location") {
+        const imageUrl =
+          "https://source.unsplash.com/featured/?" +
+          encodeURIComponent(location);
+
+        cityImage.src = imageUrl;
+        cityImage.alt = "Image of " + location;
+        cityImage.style.display = "block";
+      }
     });
 });

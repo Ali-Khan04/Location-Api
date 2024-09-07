@@ -2,26 +2,25 @@
 <html>
   <head>
     <title>Your Location</title>
-    <link
-      rel="stylesheet"
-      href="C:\Users\GAMING\Downloads\JS\location-api\CSS\body.css"
-    />
-    <link
-      rel="stylesheet"
-      href="C:\Users\GAMING\Downloads\JS\location-api\CSS\display.css"
-    />
-    <link
-      rel="stylesheet"
-      href="C:\Users\GAMING\Downloads\JS\location-api\CSS\button.css"
-    />
+    <link rel="stylesheet" href="CSS/body.css" />
+    <link rel="stylesheet" href="CSS/display.css" />
+    <link rel="stylesheet" href="CSS/button.css" />
+    <link rel="stylesheet" href="CSS/city_pic.css" />
   </head>
   <body>
     <div class="container">
+      <div class="city_pic">
+        <img
+          id="city_image"
+          style="display: none"
+          alt="Your city's image here"
+        />
+      </div>
       <div class="display_window" id="display_window">Your location here!</div>
       <div class="call_button">
         <button id="call_button">Find</button>
       </div>
     </div>
-    <script src="C:\Users\GAMING\Downloads\JS\location-api\JS\location.js"></script>
+    <script src="JS/location.js"></script>
   </body>
 </html>
