@@ -47,9 +47,9 @@ btn.addEventListener("click", function () {
       locationDisplay.style.opacity = 1;
 
       if (location !== "Unknown location") {
-        const imageUrl =
-          "https://source.unsplash.com/featured/?" +
-          encodeURIComponent(location);
+        const imageUrl = `https://pixabay.com/api/?key=45865263-dd1f8d1c8ea5fcaf9e34ef855&q=${encodeURIComponent(
+          location
+        )}&image_type=photo`;
 
         cityImage.src = imageUrl;
         cityImage.alt = "Image of " + location;
